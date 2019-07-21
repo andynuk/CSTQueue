@@ -1,0 +1,7 @@
+Dear {!Corporate_Visitor__c.Contact_Person__c}
+
+You have booked in {!Corporate_Visitor__c.Visitor_Name_1__c} to arrive {!Corporate_Visitor__c.00N0Y00000MFOpG} at {!Corporate_Visitor__c.00N0Y00000MFdPZ}.
+
+{!Corporate_Visitor__c.Visitor_Name_1__c} has arrived in CST. 
+
+We will also contact you by the number provided to ensure that you know that the visitor has arrived.

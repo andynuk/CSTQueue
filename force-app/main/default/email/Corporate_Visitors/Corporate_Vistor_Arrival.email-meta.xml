@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent when corporate vistor arrives</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Corporate Vistor Arrival</name>
+    <style>none</style>
+    <subject>Important Message from CST - Your Visitor has Arrived</subject>
+    <textOnly>Dear {!Corporate_Visitor__c.Contact_Person__c}  
+
+You have booked in {!Corporate_Visitor__c.Visitor_Name_1__c} to arrive {!Corporate_Visitor__c.00N0Y00000MFOpG} at {!Corporate_Visitor__c.00N0Y00000MFdPZ}.  
+
+{!Corporate_Visitor__c.Visitor_Name_1__c} has arrived in CST.  We will also contact you by the number provided to ensure that you know that the visitor has arrived.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

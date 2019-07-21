@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <choices>
+        <name>X1</name>
+        <choiceText>1</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>1.0</numberValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X2</name>
+        <choiceText>2</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>2.0</numberValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X3</name>
+        <choiceText>3</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>3.0</numberValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X4</name>
+        <choiceText>4</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>4.0</numberValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X5</name>
+        <choiceText>5</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>5.0</numberValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>How_Many_Visitors_Choice</name>
+        <label>How Many Visitors</label>
+        <locationX>220</locationX>
+        <locationY>353</locationY>
+        <defaultConnector>
+            <targetReference>Visitor_2_Details</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>More than 1</defaultConnectorLabel>
+        <rules>
+            <name>X1_choice</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>How_Many_Visitors</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Corporate_Visitor_Details_1</targetReference>
+            </connector>
+            <label>1</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>How_Many_Visitors_Choice_1</name>
+        <label>How Many Visitors</label>
+        <locationX>374</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Visitor_3_Details</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>More than 2</defaultConnectorLabel>
+        <rules>
+            <name>X1_choice_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>How_Many_Visitors</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Corporate_Visitor_Details_1</targetReference>
+            </connector>
+            <label>2</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>How_Many_Visitors_Choice_1_1</name>
+        <label>How Many Visitors</label>
+        <locationX>530</locationX>
+        <locationY>348</locationY>
+        <defaultConnector>
+            <targetReference>Visitor_4_Details</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>More than 3</defaultConnectorLabel>
+        <rules>
+            <name>X1_choice_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>How_Many_Visitors</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>3.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Corporate_Visitor_Details_1</targetReference>
+            </connector>
+            <label>3</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>How_Many_Visitors_Choice_1_1_1</name>
+        <label>How Many Visitors</label>
+        <locationX>687</locationX>
+        <locationY>348</locationY>
+        <defaultConnector>
+            <targetReference>Visitor_5_Details</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>More than 4</defaultConnectorLabel>
+        <rules>
+            <name>X1_choice_4</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>How_Many_Visitors</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>4.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Corporate_Visitor_Details_1</targetReference>
+            </connector>
+            <label>4</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Add New Corporate Visitor {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Add New Corporate Visitor</label>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Corporate_Visitor</name>
+        <label>Create Corporate Visitor</label>
+        <locationX>525</locationX>
+        <locationY>692</locationY>
+        <assignRecordIdToReference>newRecordId</assignRecordIdToReference>
+        <connector>
+            <targetReference>Complete</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Contact_Email__c</field>
+            <value>
+                <elementReference>Contact_Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact_Number__c</field>
+            <value>
+                <elementReference>Contact_Number</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact_Person__c</field>
+            <value>
+                <elementReference>Contact_Person</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Date_of_Meeting__c</field>
+            <value>
+                <elementReference>Meeting_Date_and_Time</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>Meeting_Title</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Organiser_Email__c</field>
+            <value>
+                <elementReference>Organising_Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Organiser__c</field>
+            <value>
+                <elementReference>Organiser_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Email_1__c</field>
+            <value>
+                <elementReference>Visitor_Email_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Email_2__c</field>
+            <value>
+                <elementReference>Visitor_Email_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Email_3__c</field>
+            <value>
+                <elementReference>Visitor_Email_3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Email_4__c</field>
+            <value>
+                <elementReference>Visitor_Email_4</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Email_5__c</field>
+            <value>
+                <elementReference>Visitor_Email_5</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Name_1__c</field>
+            <value>
+                <elementReference>Visitor_Name_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Name_2__c</field>
+            <value>
+                <elementReference>Visitor_Name_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Name_3__c</field>
+            <value>
+                <elementReference>Visitor_Name_3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Name_4__c</field>
+            <value>
+                <elementReference>Visitor_Name_4</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Visitor_Name_5__c</field>
+            <value>
+                <elementReference>Visitor_Name_5</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Corporate_Visitor__c</object>
+    </recordCreates>
+    <screens>
+        <name>Complete</name>
+        <label>Complete</label>
+        <locationX>427</locationX>
+        <locationY>842</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>complete_desc</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;The corporate visitor is now setup.&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Your visitors will each get a customised email with visitng instructions. &lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;When the vistor arrives CST will email and text your entered details.&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Corporate_Visitor_Details_0</name>
+        <label>Corporate Visitor Details</label>
+        <locationX>64</locationX>
+        <locationY>67</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Visitor_1_Details</targetReference>
+        </connector>
+        <fields>
+            <name>MeetingI</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;B&gt;Meeting Information:&lt;/B&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Meeting_Title</name>
+            <dataType>String</dataType>
+            <fieldText>Meeting Title</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Meeting_Date_and_Time</name>
+            <dataType>DateTime</dataType>
+            <defaultValue>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </defaultValue>
+            <fieldText>Meeting Date and Time</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Organising_0</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;B&gt;Name of peson organising the meeting:&lt;/B&gt;&lt;FONT STYLE=&quot;font-size:12px&quot;&gt;&lt;/FONT&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Organiser_Name</name>
+            <dataType>String</dataType>
+            <fieldText>Organiser Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Organising_Email</name>
+            <dataType>String</dataType>
+            <fieldText>Organising Email</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>Please enter a valid email address</errorMessage>
+                <formulaExpression>REGEX({!Organising_Email},&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}&quot;)</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>visitors</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;B&gt;Visitors:&lt;/B&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>How_Many_Visitors</name>
+            <choiceReferences>X1</choiceReferences>
+            <choiceReferences>X2</choiceReferences>
+            <choiceReferences>X3</choiceReferences>
+            <choiceReferences>X4</choiceReferences>
+            <choiceReferences>X5</choiceReferences>
+            <dataType>Number</dataType>
+            <defaultSelectedChoiceReference>X1</defaultSelectedChoiceReference>
+            <fieldText>How Many Visitors</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+            <scale>0</scale>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Corporate_Visitor_Details_1</name>
+        <label>Corporate Visitor Details</label>
+        <locationX>600</locationX>
+        <locationY>549</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Create_Corporate_Visitor</targetReference>
+        </connector>
+        <fields>
+            <name>ArrivalInfo_1</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please enter information on who to contact when the visitor arrives:&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Contact_Person</name>
+            <dataType>String</dataType>
+            <fieldText>Contact Person</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Contact_Email</name>
+            <dataType>String</dataType>
+            <fieldText>Contact Email</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>Please enter a valid email address</errorMessage>
+                <formulaExpression>REGEX({!Contact_Email},&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}&quot;)</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>Contact_Number</name>
+            <dataType>String</dataType>
+            <fieldText>Contact Mobile</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>details</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;B&gt;The email and mobile number will be used to contact when the visitor arrives. &lt;/B&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Visitor_1_Details</name>
+        <label>Visitor 1 Details</label>
+        <locationX>139</locationX>
+        <locationY>212</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>How_Many_Visitors_Choice</targetReference>
+        </connector>
+        <fields>
+            <name>visitordetails</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please enter the details of your visitor:&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Visitor_Name_1</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Visitor_Email_1</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Email</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>Please enter a valid email address.</errorMessage>
+                <formulaExpression>REGEX({!Visitor_Email_1},&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}&quot;)</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Visitor_2_Details</name>
+        <label>Visitor 2 Details</label>
+        <locationX>294</locationX>
+        <locationY>216</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>How_Many_Visitors_Choice_1</targetReference>
+        </connector>
+        <fields>
+            <name>current</name>
+            <fieldText>Your Current Visitors are:
+
+{!Visitor_Name_1}</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>visitordetails_1</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please enter the details of your visitor:&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Visitor_Name_2</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Visitor_Email_2</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Email</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>Please enter a valid email address.</errorMessage>
+                <formulaExpression>REGEX({!Visitor_Email_2},&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}&quot;)</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Visitor_3_Details</name>
+        <label>Visitor 3 Details</label>
+        <locationX>456</locationX>
+        <locationY>218</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>How_Many_Visitors_Choice_1_1</targetReference>
+        </connector>
+        <fields>
+            <name>current_1</name>
+            <fieldText>Your Current Visitors are:
+
+{!Visitor_Name_1}
+{!Visitor_Name_2}</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>visitordetails_1_1</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please enter the details of your visitor:&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Visitor_Name_3</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Visitor_Email_3</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Email</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>Please enter a valid email address.</errorMessage>
+                <formulaExpression>REGEX({!Visitor_Email_3},&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}&quot;)</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Visitor_4_Details</name>
+        <label>Visitor 4 Details</label>
+        <locationX>643</locationX>
+        <locationY>223</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>How_Many_Visitors_Choice_1_1_1</targetReference>
+        </connector>
+        <fields>
+            <name>current_1_1</name>
+            <fieldText>Your Current Visitors are:
+
+{!Visitor_Name_1}
+{!Visitor_Name_2}
+{!Visitor_Name_3}</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>visitordetails_1_1_1</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please enter the details of your visitor:&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Visitor_Name_4</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Visitor_Email_4</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Email</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>Please enter a valid email address.</errorMessage>
+                <formulaExpression>REGEX({!Visitor_Email_4},&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}&quot;)</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Visitor_5_Details</name>
+        <label>Visitor 5 Details</label>
+        <locationX>879</locationX>
+        <locationY>275</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Corporate_Visitor_Details_1</targetReference>
+        </connector>
+        <fields>
+            <name>current_1_1_1</name>
+            <fieldText>Your Current Visitors are:
+
+{!Visitor_Name_1}
+{!Visitor_Name_2}
+{!Visitor_Name_3}
+{!Visitor_Name_4}</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>visitordetails_1_1_1_1</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please enter the details of your visitor:&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Visitor_Name_5</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Visitor_Email_5</name>
+            <dataType>String</dataType>
+            <fieldText>Visitor Email</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>Please enter a valid email address.</errorMessage>
+                <formulaExpression>REGEX({!Visitor_Email_5},&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}&quot;)</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>Corporate_Visitor_Details_0</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>newRecordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

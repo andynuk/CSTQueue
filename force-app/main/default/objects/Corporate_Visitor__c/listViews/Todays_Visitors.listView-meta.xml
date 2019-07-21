@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Todays_Visitors</fullName>
+    <columns>NAME</columns>
+    <columns>Arrived__c</columns>
+    <columns>Visitor_Name_1__c</columns>
+    <columns>Contact_Person__c</columns>
+    <columns>Contact_Number__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Today__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Arrived__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Todays Visitors</label>
+</ListView>

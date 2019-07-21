@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Visitor_Email_1__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Name of visitor 2</inlineHelpText>
+    <label>Visitor Email 1</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Email</type>
+    <unique>false</unique>
+</CustomField>
