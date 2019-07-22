@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Reset</name>
+        <label>Reset</label>
+        <locationX>272</locationX>
+        <locationY>399</locationY>
+        <actionName>CSTQueueReset</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>End</targetReference>
+        </connector>
+    </actionCalls>
+    <interviewLabel>CSTQueueReset {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CSTQueueReset</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>End</name>
+        <label>End</label>
+        <locationX>426</locationX>
+        <locationY>472</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>restmessage</name>
+            <fieldText>&lt;p&gt;The queue number is reset&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Reset_Queue</name>
+        <label>Reset Queue</label>
+        <locationX>120</locationX>
+        <locationY>232</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Reset</targetReference>
+        </connector>
+        <fields>
+            <name>netxaction</name>
+            <fieldText>&lt;p&gt;Click Next to reset the queue number back to 1&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>Reset_Queue</startElementReference>
+    <status>Active</status>
+</Flow>
