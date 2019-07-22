@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionCalls>
+        <name>Increment_CST_Queue</name>
+        <label>Increment CST Queue</label>
+        <locationX>480</locationX>
+        <locationY>685</locationY>
+        <actionName>CSTQueueIncrement</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Loop_over_returned</targetReference>
+        </connector>
+        <outputParameters>
+            <assignToReference>QueueNumberList</assignToReference>
+            <name>output</name>
+        </outputParameters>
+    </actionCalls>
     <assignments>
         <name>New_Customer</name>
         <label>New Customer</label>
-        <locationX>566</locationX>
-        <locationY>694</locationY>
+        <locationX>775</locationX>
+        <locationY>797</locationY>
         <assignmentItems>
             <assignToReference>NewCustomer.Arrival_Time__c</assignToReference>
             <operator>Assign</operator>
@@ -47,8 +62,38 @@
                 <elementReference>Title_Name</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewCustomer.QueuePosition__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>QueueNumber</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewCustomer.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Waiting</stringValue>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Insert_New_Customer</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>No_action</name>
+        <label>No action</label>
+        <locationX>521</locationX>
+        <locationY>445</locationY>
+        <assignmentItems>
+            <assignToReference>QueueNumber</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>QueueNumber</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_over_returned</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -121,6 +166,21 @@
     </dynamicChoiceSets>
     <interviewLabel>CST Queue Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CST Queue Flow</label>
+    <loops>
+        <name>Loop_over_returned</name>
+        <label>Loop over returned</label>
+        <locationX>605</locationX>
+        <locationY>643</locationY>
+        <assignNextValueToReference>QueueNumber</assignNextValueToReference>
+        <collectionReference>QueueNumberList</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>No_action</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>New_Customer</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -137,46 +197,24 @@
     <recordCreates>
         <name>Insert_New_Customer</name>
         <label>Insert New Customer</label>
-        <locationX>605</locationX>
-        <locationY>821</locationY>
-        <connector>
-            <targetReference>Lookup_Reference</targetReference>
-        </connector>
-        <inputReference>NewCustomer</inputReference>
-    </recordCreates>
-    <recordLookups>
-        <name>Lookup_Reference</name>
-        <label>Lookup Reference</label>
-        <locationX>412</locationX>
-        <locationY>926</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <locationX>546</locationX>
+        <locationY>898</locationY>
         <connector>
             <targetReference>Complete</targetReference>
         </connector>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>NewCustomer.Id</elementReference>
-            </value>
-        </filters>
-        <object>CST_Queue__c</object>
-        <outputAssignments>
-            <assignToReference>Queue_Number_Reference</assignToReference>
-            <field>Name</field>
-        </outputAssignments>
-    </recordLookups>
+        <inputReference>NewCustomer</inputReference>
+    </recordCreates>
     <screens>
         <name>Complete</name>
         <label>Complete</label>
-        <locationX>231</locationX>
-        <locationY>964</locationY>
+        <locationX>334</locationX>
+        <locationY>899</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
         <allowPause>true</allowPause>
         <fields>
             <name>Confirmation_Text</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;{!Queue_Number_Reference}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Your queue number is:&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt; {!QueueNumber}&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Please take a seat&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -209,8 +247,8 @@
     <screens>
         <name>Service</name>
         <label>Service</label>
-        <locationX>306</locationX>
-        <locationY>604</locationY>
+        <locationX>341</locationX>
+        <locationY>510</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -236,13 +274,13 @@
     <screens>
         <name>Service_Detail_Screen</name>
         <label>Service Detail</label>
-        <locationX>404</locationX>
-        <locationY>729</locationY>
+        <locationX>351</locationX>
+        <locationY>684</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>New_Customer</targetReference>
+            <targetReference>Increment_CST_Queue</targetReference>
         </connector>
         <fields>
             <name>Service_Detail</name>
@@ -258,8 +296,8 @@
     <screens>
         <name>Welcome</name>
         <label>Welcome</label>
-        <locationX>305</locationX>
-        <locationY>431</locationY>
+        <locationX>360</locationX>
+        <locationY>360</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -307,10 +345,19 @@
         <objectType>CST_Queue__c</objectType>
     </variables>
     <variables>
-        <name>Queue_Number_Reference</name>
-        <dataType>String</dataType>
+        <name>QueueNumber</name>
+        <dataType>Number</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>QueueNumberList</name>
+        <dataType>Number</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
     </variables>
 </Flow>

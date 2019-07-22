@@ -2,6 +2,7 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Current_Queue</fullName>
     <columns>NAME</columns>
+    <columns>QueuePosition__c</columns>
     <columns>Title__c</columns>
     <columns>First_Name__c</columns>
     <columns>Surname__c</columns>

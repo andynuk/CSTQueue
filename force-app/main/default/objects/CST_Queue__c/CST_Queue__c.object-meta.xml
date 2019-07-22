@@ -155,7 +155,6 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
     <label>CST Queue</label>
     <nameField>
         <displayFormat>CST-{DD}-{MM}-{YYYY}-{00000}</displayFormat>

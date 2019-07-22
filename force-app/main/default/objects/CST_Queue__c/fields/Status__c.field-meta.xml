@@ -25,6 +25,11 @@
                 <default>false</default>
                 <label>Closed</label>
             </value>
+            <value>
+                <fullName>Announce</fullName>
+                <default>false</default>
+                <label>Announce</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -3,8 +3,38 @@
     <assignments>
         <name>Update_Record</name>
         <label>Update Record</label>
-        <locationX>639</locationX>
-        <locationY>320</locationY>
+        <locationX>490</locationX>
+        <locationY>244</locationY>
+        <assignmentItems>
+            <assignToReference>Customer.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Announce</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Customer.Call_Forward_Time__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Customer.CST_Agent__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CurrentUser</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_CST_Queue</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Record_0</name>
+        <label>Update Record</label>
+        <locationX>326</locationX>
+        <locationY>898</locationY>
         <assignmentItems>
             <assignToReference>Customer.Status__c</assignToReference>
             <operator>Assign</operator>
@@ -27,45 +57,131 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Update_CST_Queue</targetReference>
+            <targetReference>Update_CST_Queue_0</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Record_0_0</name>
+        <label>Update Record</label>
+        <locationX>478</locationX>
+        <locationY>904</locationY>
+        <assignmentItems>
+            <assignToReference>Customer.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Waiting</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Customer.Call_Forward_Time__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Customer.CST_Agent__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CurrentUser</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_CST_Queue_0</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Record_0_0_0</name>
+        <label>Update Record</label>
+        <locationX>629</locationX>
+        <locationY>913</locationY>
+        <assignmentItems>
+            <assignToReference>Customer.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Customer.Call_Forward_Time__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Customer.CST_Agent__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CurrentUser</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_CST_Queue_0</targetReference>
         </connector>
     </assignments>
     <choices>
-        <name>No</name>
-        <choiceText>No</choiceText>
+        <name>Customerhascomeforward</name>
+        <choiceText>Customer as come forward</choiceText>
         <dataType>String</dataType>
         <value>
-            <stringValue>No</stringValue>
+            <stringValue>CustomerAttend</stringValue>
         </value>
     </choices>
     <choices>
-        <name>Yes</name>
-        <choiceText>Yes</choiceText>
+        <name>CustomerLeft</name>
+        <choiceText>Remove Customer From Queue</choiceText>
         <dataType>String</dataType>
         <value>
-            <stringValue>Yes</stringValue>
+            <stringValue>Remove</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Reset</name>
+        <choiceText>Customer incorrectly announced - reset</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Reset</stringValue>
         </value>
     </choices>
     <decisions>
-        <name>Proceed_Dec</name>
-        <label>Proceed</label>
-        <locationX>489</locationX>
-        <locationY>232</locationY>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <name>Customer_Call_Decision</name>
+        <label>Customer Call Decision</label>
+        <locationX>454</locationX>
+        <locationY>746</locationY>
+        <defaultConnector>
+            <targetReference>Update_Record_0_0_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Abandoned</defaultConnectorLabel>
         <rules>
-            <name>Yes_Dec</name>
+            <name>Proceed</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Proceed</leftValueReference>
+                <leftValueReference>Customer_Update</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>Yes</elementReference>
+                    <elementReference>Customerhascomeforward</elementReference>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Record</targetReference>
+                <targetReference>Update_Record_0</targetReference>
             </connector>
-            <label>Yes</label>
+            <label>Proceed</label>
+        </rules>
+        <rules>
+            <name>Reset_Dec</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Customer_Update</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Reset</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Record_0_0</targetReference>
+            </connector>
+            <label>Reset</label>
         </rules>
     </decisions>
     <formulas>
@@ -113,6 +229,7 @@
         <queriedFields>Service_Area__c</queriedFields>
         <queriedFields>Service_Detail__c</queriedFields>
         <queriedFields>Name</queriedFields>
+        <queriedFields>QueuePosition__c</queriedFields>
     </recordLookups>
     <recordUpdates>
         <name>Update_CST_Queue</name>
@@ -124,18 +241,38 @@
         </connector>
         <inputReference>Customer</inputReference>
     </recordUpdates>
+    <recordUpdates>
+        <name>Update_CST_Queue_0</name>
+        <label>Update CST Queue</label>
+        <locationX>478</locationX>
+        <locationY>1132</locationY>
+        <inputReference>Customer</inputReference>
+    </recordUpdates>
     <screens>
         <name>Announce</name>
         <label>Announce</label>
-        <locationX>656</locationX>
-        <locationY>440</locationY>
+        <locationX>452</locationX>
+        <locationY>605</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Customer_Call_Decision</targetReference>
+        </connector>
         <fields>
             <name>Customer_Details</name>
-            <fieldText>&lt;p&gt;You are about to pull this customer forward:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Name: {!Customer.Title__c} {!Customer.First_Name__c} {!Customer.Surname__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Service Area: {!Customer.Service_Area__c}&lt;/p&gt;&lt;p&gt;Service Detail: {!Customer.Service_Detail__c}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;You have requested that this customer is announced on the screen to come forward:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Name: {!Customer.Title__c} {!Customer.First_Name__c} {!Customer.Surname__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Service Area: {!Customer.Service_Area__c}&lt;/p&gt;&lt;p&gt;Service Detail: {!Customer.Service_Detail__c}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Customer_Update</name>
+            <choiceReferences>Customerhascomeforward</choiceReferences>
+            <choiceReferences>Reset</choiceReferences>
+            <choiceReferences>CustomerLeft</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Customer Update</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -149,22 +286,17 @@
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Proceed_Dec</targetReference>
+            <targetReference>Update_Record</targetReference>
         </connector>
         <fields>
             <name>intro</name>
-            <fieldText>&lt;p&gt;You are about to pull this customer forward:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Name: {!Customer.Title__c} {!Customer.First_Name__c} {!Customer.Surname__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Service Area: {!Customer.Service_Area__c}&lt;/p&gt;&lt;p&gt;Service Detail: {!Customer.Service_Detail__c}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;You are about to pull this customer forward:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Name: {!Customer.Title__c} {!Customer.First_Name__c} {!Customer.Surname__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Service Area: {!Customer.Service_Area__c}&lt;/p&gt;&lt;p&gt;Service Detail: {!Customer.Service_Detail__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Queue Position: {!Customer.QueuePosition__c}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>Proceed</name>
-            <choiceReferences>Yes</choiceReferences>
-            <choiceReferences>No</choiceReferences>
-            <dataType>String</dataType>
-            <defaultSelectedChoiceReference>Yes</defaultSelectedChoiceReference>
-            <fieldText>Proceed:</fieldText>
-            <fieldType>RadioButtons</fieldType>
-            <isRequired>true</isRequired>
+            <name>nextaction</name>
+            <fieldText>&lt;p&gt;Click &#39;Next&#39; to announce customer.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
