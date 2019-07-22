@@ -2,7 +2,14 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "baseUrl": ".",
-        "paths": {}
+        "paths": {
+            "c/CSTQueueWallboard": [
+                "CSTQueueWallboard/CSTQueueWallboard.js"
+            ],
+            "c/cSTQueueWallboard": [
+                "cSTQueueWallboard/cSTQueueWallboard.js"
+            ]
+        }
     },
     "include": [
         "**/*",
