@@ -3,9 +3,6 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/CSTQueueWallboard": [
-                "CSTQueueWallboard/CSTQueueWallboard.js"
-            ],
             "c/cSTQueueWallboard": [
                 "cSTQueueWallboard/cSTQueueWallboard.js"
             ]
