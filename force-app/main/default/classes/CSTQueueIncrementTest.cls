@@ -1,9 +1,11 @@
 @isTest
 public class CSTQueueIncrementTest {
-        static testMethod void CSTQueueIncrementTest() {
+    
+    static testMethod void CSTQueueIncrementTest() {
 
-        Test.startTest();
-    //  CSTQueueIncrement.doCSTIncrement();
-        Test.stopTest();
-        }
+    Test.startTest();
+  //  CSTQueueIncrement.doCSTIncrement();
+    Test.stopTest();
+    
+    }
 }
