@@ -11,7 +11,6 @@ echo ${TESTVAR}
 # Authenticate to salesforce
 echo "Authenticating..."
 RES=$(sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json)
-echo ${RES}
 SFDC_AUTHENTICATE_ID=$(echo ${RES} | jq --raw-output .result.orgId) 
 echo "OrgId..."
 echo ${SFDC_AUTHENTICATE_ID}
@@ -20,16 +19,13 @@ echo ${SFDC_AUTHENTICATE_ID}
 echo "Name of Scratch Org"
 echo ${CIRCLE_BRANCH}
 
-
 echo "Creating the Scratch Org..."
 RES=$(sfdx force:org:create -f config/project-scratch-def.json -a ${CIRCLE_BRANCH} -s -d 1 --json) 
-echo ${RES}
 
 #Create org wide email address
 echo "Create org email address... "
 SFDC_CREATE_EMAIL=$(sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json)
 SFDC_EMAIL_ID=$(echo $SFDC_CREATE_EMAIL| jq --raw-output .result.id) 
-
 
 echo "reading email id created"
 echo ${SFDC_EMAIL_ID}
@@ -38,5 +34,3 @@ echo "Valiate org email address... "
 RES=$(sfdx sfpowerkit:org:orgwideemail:verify -i ${SFDC_EMAIL_ID} -u ${CIRCLE_BRANCH})
 echo ${RES}
 
-echo "Delete the Scratch Org..."
-sfdx force:org:delete -p -u ${CIRCLE_BRANCH}

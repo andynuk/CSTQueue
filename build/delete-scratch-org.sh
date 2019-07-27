@@ -12,4 +12,4 @@ sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/serve
 echo "Name of Scratch Org to delete"
 echo ${CIRCLE_BRANCH}
 echo "Delete the Scratch Org..."
-#sfdx force:org:create -f config/project-scratch-def.json -a ${CIRCLE_BRANCH} -s
+sfdx force:org:delete -p -u ${CIRCLE_BRANCH}
