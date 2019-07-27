@@ -5,10 +5,8 @@ echo $SFDC_SERVER_KEY | base64 -d > keys/server.key
 
 # Authenticate to salesforce
 echo "Authenticating..."
-sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json > auth.txt
+sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json | jq
 
-echo auth.txt
-echo (auth.txt | jq --raw-output '.result.id')
 
 
 
@@ -22,7 +20,7 @@ sfdx force:org:create -f config/project-scratch-def.json -a ${CIRCLE_BRANCH} -s 
 
 #Create org wide email address
 echo "Create org email address... "
-echo $SFDC_EMAIL_ID | sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json > jq --raw-output '.result.id' 
+echo $SFDC_EMAIL_ID | (sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json | jq --raw-output .result.id) 
 
 echo "reading email id created"
 #cat email.txt 
