@@ -13,18 +13,15 @@ echo "Name of Scratch Org"
 echo ${CIRCLE_BRANCH}
 
 echo "Creating the Scratch Org..."
-sfdx force:org:create -f config/project-scratch-def.json -a ${CIRCLE_BRANCH} -s -d 1
+sfdx force:org:create -f config/project-scratch-def.json -a ${CIRCLE_BRANCH} -s -d 1 --json 
 
 
 #Create org wide email address
 echo "Create org email address... "
-echo $SFDC_EMAIL_ID | (sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json | jq --raw-output .result.id) 
+SFDC_EMAIL_ID= $(sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json | jq --raw-output .result.id) > emailid.txt
+
 
 echo "reading email id created"
-#cat email.txt 
-#echo email.txt | jq --raw-output '.result.id'
-#echo $SFDC_EMAIL_ID | (email.txt | jq --raw-output '.result.id')
-
 echo $SFDC_EMAIL_ID
 
 echo "Valiate org email address... "
