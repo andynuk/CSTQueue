@@ -10,16 +10,15 @@ sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/serve
 
 #Create a scratch org
 echo "Name of Scratch Org"
-echo 'export ScratchOrgName=${CIRCLE_BRANCH}${CIRCLE_BUILD_NUM}' >> $BASH_ENV
 
-echo ${ScratchOrgName}
+echo ${CIRCLE_BRANCH}
 echo "Creating the Scratch Org..."
-sfdx force:org:create -f config/project-scratch-def.json -a ${ScratchOrgName} -s
+sfdx force:org:create -f config/project-scratch-def.json -a ${CIRCLE_BRANCH} -s -d 1
 
 
 #Create org wide email address
 echo "Create and valiate org email address... "
-sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${ScratchOrgName} --json > email.txt
+sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json > email.txt
 
 echo "reading email id created"
 echo cat email.txt 
