@@ -35,7 +35,7 @@ echo "reading email id created"
 echo ${SFDC_EMAIL_ID}
 
 echo "Valiate org email address... "
-RES=$(sfdx sfpowerkit:org:orgwideemail:verify -i ${SFDC_EMAIL_ID} -u andynuk@gmail.com)
+RES=$(sfdx sfpowerkit:org:orgwideemail:verify -i ${SFDC_EMAIL_ID} -u ${CIRCLE_BRANCH})
 echo ${RES}
 
 echo "Delete the Scratch Org..."
