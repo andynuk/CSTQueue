@@ -12,7 +12,7 @@
             <field>Visitor_Email_1__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>test@example.com</senderAddress>
+        <senderAddress>andynuk@gmail.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Corporate_Visitors/External_Outbound_Invite</template>
     </alerts>
@@ -24,7 +24,7 @@
             <field>Organiser_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>test@example.com</senderAddress>
+        <senderAddress>andynuk@gmail.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Corporate_Visitors/Corporate_Vistor_Arrival</template>
     </alerts>
