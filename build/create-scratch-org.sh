@@ -5,8 +5,12 @@ echo $SFDC_SERVER_KEY | base64 -d > keys/server.key
 
 # Authenticate to salesforce
 echo "Authenticating..."
-sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json 
-
+SFDC_AUTHENTICATE = $(sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json) 
+echo "Result..."
+echo $SFDC_AUTHENTICATE
+echo "Reading OrgID..."
+SFDC_AUTHENTICATE_ID = $(echo $SFDC_AUTHENTICATE | jq --raw-output .result.orgId)
+echo $SFDC_AUTHENTICATE_ID
 
 #Create a scratch org
 echo "Name of Scratch Org"
@@ -18,7 +22,8 @@ sfdx force:org:create -f config/project-scratch-def.json -a ${CIRCLE_BRANCH} -s 
 
 #Create org wide email address
 echo "Create org email address... "
-SFDC_EMAIL_ID= $(sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json | jq --raw-output .result.id) 
+SFDC_CREATE_EMAIL= $(sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json)
+SFDC_EMAIL_ID = $(echo $SFDC_CREATE_EMAIL| jq --raw-output .result.id) 
 
 
 echo "reading email id created"
