@@ -5,7 +5,7 @@ echo $SFDC_SERVER_KEY | base64 -d > keys/server.key
 
 # Authenticate to salesforce
 echo "Authenticating..."
-SFDC_AUTHENTICATE = (sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json | jq --raw-output .result.orgId)
+echo (sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json | jq --raw-output .result.orgId) | SFDC_AUTHENTICATE
 echo "Result..."
 echo $SFDC_AUTHENTICATE
 #echo "Reading OrgID..."
