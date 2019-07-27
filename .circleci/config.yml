@@ -1,5 +1,13 @@
 version: 2
 jobs:
+  buildonly:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: . build/install.sh
   build:
     docker:
       - image: circleci/node:latest
@@ -34,7 +42,7 @@ workflows:
   version: 2
   validate:
     jobs:
-      - build:
+      - buildonly:
           filters:
             branches:
               ignore:
