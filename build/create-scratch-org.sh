@@ -5,12 +5,12 @@ echo $SFDC_SERVER_KEY | base64 -d > keys/server.key
 
 # Authenticate to salesforce
 echo "Authenticating..."
-SFDC_AUTHENTICATE = $(sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json) 
+SFDC_AUTHENTICATE = (sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json | jq --raw-output .result.orgId)
 echo "Result..."
 echo $SFDC_AUTHENTICATE
-echo "Reading OrgID..."
-SFDC_AUTHENTICATE_ID = $(echo $SFDC_AUTHENTICATE | jq --raw-output .result.orgId)
-echo $SFDC_AUTHENTICATE_ID
+#echo "Reading OrgID..."
+#SFDC_AUTHENTICATE_ID = $(echo $SFDC_AUTHENTICATE | jq --raw-output .result.orgId)
+#echo $SFDC_AUTHENTICATE_ID
 
 #Create a scratch org
 echo "Name of Scratch Org"
