@@ -7,13 +7,13 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: .build/install.sh
+          command: . build/install.sh
       - run:
           name: Create Scratch Org
-          command: .build/create-scratch-org.sh
+          command: . build/create-scratch-org.sh
       - run:
           name: Delete Scratch Org
-          command: .build/delete-scratch-org.sh
+          command: . build/delete-scratch-org.sh
   build:
     docker:
       - image: circleci/node:latest
@@ -21,18 +21,18 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: .build/install.sh
+          command: . build/install.sh
       - run:
           name: Create Scratch Org
-          command: .build/create-scratch-org.sh
+          command: . build/create-scratch-org.sh
       - run:
           name: Validate Components & Run Tests
-          command: .build/test.sh
+          command: . build/test.sh
       - store_test_results:
           path: test-results
       - run:
           name: Delete Scratch Org
-          command: .build/delete-scratch-org.sh
+          command: . build/delete-scratch-org.sh
   deploy-prod:
     docker:
     - image: circleci/node:latest
