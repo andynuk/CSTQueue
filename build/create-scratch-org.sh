@@ -32,10 +32,11 @@ SFDC_EMAIL_ID=$(echo $SFDC_CREATE_EMAIL| jq --raw-output .result.id)
 
 
 echo "reading email id created"
-echo $SFDC_EMAIL_ID
+echo ${SFDC_EMAIL_ID}
 
 echo "Valiate org email address... "
-sfdx sfpowerkit:org:orgwideemail:verify -i $SFDC_EMAIL_ID -u andynuk@gmail.com
+RES=$(sfdx sfpowerkit:org:orgwideemail:verify -i ${SFDC_EMAIL_ID} -u andynuk@gmail.com)
+echo ${RES}
 
 echo "Delete the Scratch Org..."
 sfdx force:org:delete -p -u ${CIRCLE_BRANCH}
