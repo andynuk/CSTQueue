@@ -22,5 +22,7 @@ sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u
 
 echo "reading email id created"
 cat email.txt 
-cat email.txt | jq '.result.id'
+echo email.txt | jq '.result.id'
 
+echo "Delete the Scratch Org..."
+sfdx force:org:delete -p -u ${CIRCLE_BRANCH}
