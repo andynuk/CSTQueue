@@ -10,7 +10,7 @@ echo ${TESTVAR}
 
 # Authenticate to salesforce
 echo "Authenticating..."
-RES= `sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json`
+RES=$(sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile keys/server.key --username $SFDC_PROD_USER --setdefaultdevhubusername -a DevHub --json)
 echo ${RES}
 SFDC_AUTHENTICATE_ID=`echo ${RES} | jq --raw-output .result.orgId` 
 echo "OrgId..."
