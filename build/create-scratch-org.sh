@@ -22,8 +22,8 @@ sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u
 
 echo "reading email id created"
 cat email.txt 
-echo email.txt | jq '.result.id'
-echo $SFDC_EMAIL_ID | (email.txt | jq '.result.id')
+echo email.txt | jq --raw-output '.result.id'
+echo $SFDC_EMAIL_ID | (email.txt | jq --raw-output '.result.id')
 
 echo $SFDC_EMAIL_ID
 
