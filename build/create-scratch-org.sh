@@ -17,12 +17,18 @@ sfdx force:org:create -f config/project-scratch-def.json -a ${CIRCLE_BRANCH} -s 
 
 
 #Create org wide email address
-echo "Create and valiate org email address... "
+echo "Create org email address... "
 sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json > email.txt
 
 echo "reading email id created"
 cat email.txt 
 echo email.txt | jq '.result.id'
+echo $SFDC_EMAIL_ID | (email.txt | jq '.result.id')
+
+echo $SFDC_EMAIL_ID
+
+echo "Valiate org email address... "
+sfdx sfpowerkit:org:orgwideemail:verify -i $SFDC_EMAIL_ID -u andynuk@gmail.com
 
 echo "Delete the Scratch Org..."
 sfdx force:org:delete -p -u ${CIRCLE_BRANCH}
