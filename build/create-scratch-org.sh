@@ -21,4 +21,6 @@ echo "Create and valiate org email address... "
 sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json > email.txt
 
 echo "reading email id created"
-echo cat email.txt 
+cat email.txt 
+cat email.txt | jq '.result.id'
+
