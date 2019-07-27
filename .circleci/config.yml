@@ -8,6 +8,9 @@ jobs:
       - run:
           name: Install Dependencies
           command: . build/install.sh
+      - run:
+          name: Create Scratch Org
+          command: . build/create-scratch-org.sh
   build:
     docker:
       - image: circleci/node:latest
