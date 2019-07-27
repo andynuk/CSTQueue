@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Get the private key from the environment variable
 echo "Setting up DevHub Connection..."
 mkdir keys
