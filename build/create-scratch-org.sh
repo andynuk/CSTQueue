@@ -24,7 +24,7 @@ RES=$(sfdx force:org:create -f config/project-scratch-def.json -a ${CIRCLE_BRANC
 
 #Create org wide email address
 echo "Create org email address... "
-SFDC_CREATE_EMAIL=$(sfdx  sfpowerkit:org:orgwideemail:create -e andynuk@gmail.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json)
+SFDC_CREATE_EMAIL=$(sfdx  sfpowerkit:org:orgwideemail:create -e test@example.com -n TestEmail -p -u ${CIRCLE_BRANCH} --json)
 SFDC_EMAIL_ID=$(echo $SFDC_CREATE_EMAIL| jq --raw-output .result.id) 
 
 echo "reading email id created"
