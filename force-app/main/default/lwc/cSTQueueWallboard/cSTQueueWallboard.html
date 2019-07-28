@@ -1,3 +1,20 @@
 <template>
-    
+    <lightning-card title="Welcome to Rutland County Council" icon-name="custom:custom14">
+        <div class="slds-card__body slds-card__body_inner">
+            When your queue number is shown below please proceed to the desk
+
+            <h1>{getPositionToDisplay}</h1>
+
+        <!--    <h2>Showing Queuenumber {queuenumber}</h2>
+            
+            <h2>Below is the list in queue</h2>
+            <template for:each={waiting} for:item="waitItem">
+                    <div key={waitItem.item.Id}  class="slds-truncate" title="Case Reference"><b>{waitItem.item.QueuePosition__c}</b></div>
+            </template>
+            
+            <lightning-button label="Next in Queue" onclick={handleNext}></lightning-button>
+        -->
+
+        </div>
+    </lightning-card>  
 </template>
