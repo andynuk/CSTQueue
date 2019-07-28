@@ -1,10 +1,9 @@
 {
   "orgName": "an Company",
   "edition": "Developer",
-  "features": ["Communities"],
+  "features": [],
   "settings": {
     "orgPreferenceSettings": {
-      "networksEnabled": true,
       "s1DesktopEnabled": true,
       "s1EncryptedStoragePref2": false
     }
