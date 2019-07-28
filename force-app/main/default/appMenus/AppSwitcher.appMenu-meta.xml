@@ -68,8 +68,4 @@
         <name>CSTQueue</name>
         <type>CustomApplication</type>
     </appMenuItems>
-    <appMenuItems>
-        <name>Wallboard</name>
-        <type>Network</type>
-    </appMenuItems>
 </AppMenu>
