@@ -11,6 +11,8 @@
     <navType>Standard</navType>
     <tabs>CST_Queue__c</tabs>
     <tabs>Corporate_Visitor__c</tabs>
+    <tabs>Wallboard</tabs>
+    <tabs>CST_Queue_Flows</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>CSTQueue_UtilityBar</utilityBar>
 </CustomApplication>

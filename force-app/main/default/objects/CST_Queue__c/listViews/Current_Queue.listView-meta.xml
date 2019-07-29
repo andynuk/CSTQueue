@@ -9,11 +9,12 @@
     <columns>Service_Area__c</columns>
     <columns>Service_Detail__c</columns>
     <columns>Arrival_Time__c</columns>
+    <columns>Status__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Status__c</field>
         <operation>equals</operation>
-        <value>Waiting</value>
+        <value>Waiting,Announce</value>
     </filters>
     <label>Current Queue</label>
 </ListView>

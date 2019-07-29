@@ -47,6 +47,20 @@ jobs:
       - run:
           name: Deploy to Production
           command: . build/deploy-prod.sh
+  deploy-UAT:
+    docker:
+    - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: . build/install.sh
+      - run:
+          name: Login to Production
+          command: . build/setup-prod.sh
+      - run:
+          name: Deploy to UAT
+          command: . build/deploy-UAT.sh
 workflows:
   version: 2
   validate:
@@ -55,9 +69,9 @@ workflows:
           filters:
             branches:
               ignore:
-                - master
-      - deploy-prod:
+                - developer
+      - deploy-UAT:
           filters:
             branches:
               only:
-                - master
+                - developer

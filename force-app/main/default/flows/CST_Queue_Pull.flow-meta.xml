@@ -145,6 +145,46 @@
         </value>
     </choices>
     <decisions>
+        <name>Check_if_announced</name>
+        <label>Check if announced</label>
+        <locationX>240</locationX>
+        <locationY>173</locationY>
+        <defaultConnector>
+            <targetReference>Customer_Selection</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>OK</defaultConnectorLabel>
+        <rules>
+            <name>Announced</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Customer.Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Announce</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Announce</targetReference>
+            </connector>
+            <label>Announced</label>
+        </rules>
+        <rules>
+            <name>Dealing_dec</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Customer.Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Dealing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Dealing</targetReference>
+            </connector>
+            <label>Dealing</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Customer_Call_Decision</name>
         <label>Customer Call Decision</label>
         <locationX>454</locationX>
@@ -211,7 +251,7 @@
         <locationY>197</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Customer_Selection</targetReference>
+            <targetReference>Check_if_announced</targetReference>
         </connector>
         <filters>
             <field>Id</field>
@@ -230,6 +270,7 @@
         <queriedFields>Service_Detail__c</queriedFields>
         <queriedFields>Name</queriedFields>
         <queriedFields>QueuePosition__c</queriedFields>
+        <queriedFields>Status__c</queriedFields>
     </recordLookups>
     <recordUpdates>
         <name>Update_CST_Queue</name>
@@ -251,8 +292,8 @@
     <screens>
         <name>Announce</name>
         <label>Announce</label>
-        <locationX>452</locationX>
-        <locationY>605</locationY>
+        <locationX>367</locationX>
+        <locationY>586</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -280,8 +321,8 @@
     <screens>
         <name>Customer_Selection</name>
         <label>Customer Selection</label>
-        <locationX>288</locationX>
-        <locationY>228</locationY>
+        <locationX>491</locationX>
+        <locationY>84</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -296,6 +337,22 @@
         <fields>
             <name>nextaction</name>
             <fieldText>&lt;p&gt;Click &#39;Next&#39; to announce customer.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Dealing</name>
+        <label>Dealing</label>
+        <locationX>106</locationX>
+        <locationY>449</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>dealing_text</name>
+            <fieldText>&lt;p&gt;You are dealing with this customer. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
