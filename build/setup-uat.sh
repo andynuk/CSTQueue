@@ -9,7 +9,7 @@ echo $SFDC_SERVER_KEY | base64 -d > uatkeys/server.key
 
 # Authenticate to salesforce
 echo "Authenticating..."
-sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile uatkeys/server.key --username $SFDC_UAT_USER  -a UAT
+sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile uatkeys/server.key --username $SFDC_UAT_USER  -a UAT -r https://test.salesforce.com
  
 echo "New listing orgs we are authorised to..."
 sfdx force:auth:list
