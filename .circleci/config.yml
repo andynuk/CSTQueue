@@ -56,8 +56,8 @@ jobs:
           name: Install Dependencies
           command: . build/install.sh
       - run:
-          name: Login to Production
-          command: . build/setup-prod.sh
+          name: Login to UAT
+          command: . build/setup-UAT.sh
       - run:
           name: Deploy to UAT
           command: . build/deploy-UAT.sh
