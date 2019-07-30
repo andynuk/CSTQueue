@@ -4,8 +4,8 @@ mkdir uatkeys
 echo $SFDC_SERVER_KEY | base64 -d > uatkeys/server.key
 
 # check what we are authorised to connect to 
-echo "Listing orgs we are authorised to..."
-sfdx force:auth:list
+#echo "Listing orgs we are authorised to..."
+#sfdx force:auth:list
 
 # Authenticate to salesforce
 echo "Authenticating..."
