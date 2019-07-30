@@ -5,6 +5,12 @@
         "paths": {
             "c/cSTQueueWallboard": [
                 "cSTQueueWallboard/cSTQueueWallboard.js"
+            ],
+            "c/CSTQueueCSTInfo": [
+                "CSTQueueCSTInfo/CSTQueueCSTInfo.js"
+            ],
+            "c/cSTQueueCSTInfo": [
+                "cSTQueueCSTInfo/cSTQueueCSTInfo.js"
             ]
         }
     },

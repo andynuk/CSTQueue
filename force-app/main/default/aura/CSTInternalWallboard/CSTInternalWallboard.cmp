@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes">
+
+    <c:cSTQueueWallboard/>
+
+    <br/>
+
+    <c:cSTQueueCSTInfo/>
+
+</aura:component>	

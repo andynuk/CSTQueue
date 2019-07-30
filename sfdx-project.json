@@ -3,7 +3,7 @@
         {
             "path": "force-app",
             "default": true,
-            "package": "CSTQueue",
+            "package": "cSTQueue",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT"
         }
@@ -12,7 +12,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "46.0",
     "packageAliases": {
-        "CSTQueue": "0Ho1n000000k9bcCAA",
-        "CSTQueue@0.1.0-1": "04t1n0000021jxDAAQ"
+        "cSTQueue": "0Ho1n000000k9bcCAA",
+        "cSTQueue@0.1.0-1": "04t1n0000021jxDAAQ"
     }
 }

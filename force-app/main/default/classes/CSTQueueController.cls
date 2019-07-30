@@ -5,4 +5,10 @@ public without sharing class CSTQueueController {
         List<CST_Queue__c> announcing = [SELECT  QueuePosition__c  FROM CST_Queue__c Where Status__c='Announce' ORDER BY QueuePosition__c ASC];
         return announcing;
         }
+
+    @AuraEnabled(cacheable=false)
+    public static List<CST_Queue__c> getWaiting() {
+        List<CST_Queue__c> waiting = [SELECT  QueuePosition__c  FROM CST_Queue__c Where Status__c='waiting' ORDER BY QueuePosition__c ASC];
+        return waiting;
+        }
 }
