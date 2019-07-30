@@ -60,7 +60,7 @@ jobs:
           command: . build/setup-uat.sh
       - run:
           name: Deploy to UAT
-          command: . build/deploy-uat.sh
+          command: . build/deploy-UAT.sh
 workflows:
   version: 2
   validate:
