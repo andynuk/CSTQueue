@@ -57,10 +57,10 @@ jobs:
           command: . build/install.sh
       - run:
           name: Login to UAT
-          command: . build/setup-UAT.sh
+          command: . build/setup-uat.sh
       - run:
           name: Deploy to UAT
-          command: . build/deploy-UAT.sh
+          command: . build/deploy-uat.sh
 workflows:
   version: 2
   validate:

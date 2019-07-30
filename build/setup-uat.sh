@@ -10,6 +10,6 @@ sfdx force:auth:list
 # Authenticate to salesforce
 echo "Authenticating..."
 sfdx force:auth:jwt:grant --clientid $SFDC_PROD_CLIENTID --jwtkeyfile uatkeys/server.key --username $SFDC_UAT_USER  -a UAT
-
+ 
 echo "New listing orgs we are authorised to..."
 sfdx force:auth:list
